@@ -36,3 +36,36 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml
+    coverage-code:
+     continue-on-error: true
+     name: code-coverage
+     runs-on: ubuntu-latest
+     steps:
+        
+      - name: Checkout your branch
+        uses: actions/checkout@v4
+
+      - name: Then install Node.js version - ${{matrix.node-version}}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{matrix.node-version}}
+
+      - name: install dependencies
+        run: npm install
+
+      - name: coverage
+        continue-on-error: true
+        run: npm run code-coverage
+
+      - name: archieve the results
+        uses: actions/upload-artifact@v7
+        with:
+          # Name of the artifact to upload.
+          # Optional. Default is 'artifact'
+          name: Code-Coverage-Result
+ 
+          # A file, directory or wildcard pattern that describes what to upload
+          # Required.
+          path: coverage
+          retention-days: 5
+      
