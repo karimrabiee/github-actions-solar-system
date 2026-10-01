@@ -36,8 +36,7 @@ jobs:
           with:
             name: Mocha-Test-Result
             path: test-results.xml
-    coverage-code:
-     continue-on-error: true
+    code-coverage:
      name: code-coverage
      runs-on: ubuntu-latest
      steps:
@@ -53,9 +52,9 @@ jobs:
       - name: install dependencies
         run: npm install
 
-      - name: coverage
+      - name: Code-Coverage Command
         continue-on-error: true
-        run: npm run code-coverage
+        run: npm run coverage
 
       - name: archieve the results
         uses: actions/upload-artifact@v7
