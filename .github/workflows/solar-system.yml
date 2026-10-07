@@ -156,8 +156,6 @@ jobs:
 
       - name: install kubectl
         uses: helm/kind-action@v1
-        with:
-          version: latest
 
       - name: set kubernetes context
         uses: azure/k8s-set-context@v5
