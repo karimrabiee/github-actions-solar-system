@@ -1,6 +1,7 @@
 name: exploring workflow
 
 on: 
+  
   workflow_dispatch:
   push:
 
