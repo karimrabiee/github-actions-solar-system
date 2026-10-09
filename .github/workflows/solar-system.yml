@@ -140,7 +140,7 @@ jobs:
       url: http://${{ steps.ingress-ip.outputs.APP_INGRESS_HOST }}
 
     outputs:
-          app-ingress-host: ${{ steps.ingress-ip.outputs.APP_INGRESS_HOST }}
+         APP_INGRESS_URL: ${{ steps.ingress-ip.outputs.APP_INGRESS_HOST }}
 
     steps:
       - name: Checkout your branch
@@ -166,7 +166,7 @@ jobs:
     name: integration-test
     uses: ./.github/workflows/reusable-workflow.yml
     with:
-      ingress-url: ${{ needs.dev-deploy.outputs.app-ingress-host }}
+      ingress-url: ${{ needs.dev-deploy.outputs.APP_INGRESS_URL }}
 
   # dev-deploy:
   #   environment:
