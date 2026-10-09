@@ -149,12 +149,13 @@ jobs:
       - name: install kubectl
         uses: helm/kind-action@v1
 
-
-      - name: set kubernetes context
-        uses: azure/k8s-set-context@v5
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBECONFIG }}
+      #  #this step is to set the kubernetes context using the kubeconfig secret stored in GitHub secrets
+      #  #becasue we use helm/kind-action@v1 to install kubectl, we can delete this step and use the default context set by helm/kind-action@v1
+      # - name: set kubernetes context
+      #   uses: azure/k8s-set-context@v5
+      #   with:
+      #     method: kubeconfig
+      #     kubeconfig: ${{ secrets.KUBECONFIG }}
 
       - name: set app ingress ip url output to other jobs
         id: ingress-ip
